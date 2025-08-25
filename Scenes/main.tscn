@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cod0ste8204p4"]
+[gd_scene load_steps=9 format=3 uid="uid://cod0ste8204p4"]
 
 [ext_resource type="Texture2D" uid="uid://by1lp1a6xgdxn" path="res://Materials/Concrete/textures/concrete_floor_worn_001_diff_1k.jpg" id="1_kln2b"]
 [ext_resource type="Texture2D" uid="uid://c3b7mg34npfao" path="res://Materials/Concrete/textures/concrete_floor_worn_001_nor_gl_1k.jpg" id="2_rgh2o"]
@@ -16,6 +16,9 @@ normal_texture = ExtResource("2_rgh2o")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ynf5e"]
 material = SubResource("StandardMaterial3D_344ge")
+size = Vector3(10, 1.2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rgh2o"]
 size = Vector3(10, 1.2, 2)
 
 [node name="Node3D" type="Node3D"]
@@ -46,3 +49,10 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 mesh = SubResource("BoxMesh_ynf5e")
 skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallChunks/Plain/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallChunks/Plain/Floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+shape = SubResource("BoxShape3D_rgh2o")

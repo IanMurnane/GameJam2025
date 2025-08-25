@@ -1,46 +1,93 @@
 extends CharacterBody3D
 
 @onready var animation_player = $SuitMan/AnimationPlayer
+@onready var suit_man_pivot = $SuitMan
 
 # Define player states as an enum for clarity.
 enum PlayerState {
+    INIT,
     IDLE,
     RUNNING,
     JUMPING,
     DOUBLE_JUMPING,
 }
 
-var current_state = PlayerState.IDLE
+var current_state = PlayerState.INIT
+var speed = 5.0 # Player's movement speed
+var jump_velocity = 10.0 # How high the player jumps
+
+# New variable for smooth rotation
+var target_y_rotation = 0.0
+var rotation_speed = 8.0 # Adjust this value to control the speed of the turn
+
+# Get the gravity from the project settings to be consistent.
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-    # Connect the animation finished signal to handle state transitions.
     animation_player.animation_finished.connect(on_animation_finished)
-    animation_player.play("idle")
+    set_state(PlayerState.IDLE)
     
 func _physics_process(delta: float) -> void:
+    # Add the gravity.
+    if not is_on_floor():
+        velocity.y -= gravity * delta
+
     # Handle jump and double jump logic
     if Input.is_action_just_pressed("Jump"):
-        # Check if the player is in the JUMPING state to allow a double jump.
-        if current_state == PlayerState.JUMPING:
-            set_state(PlayerState.DOUBLE_JUMPING)
-        # Otherwise, if the player is on the ground, allow a single jump.
-        else:
+        if is_on_floor():
+            velocity.y = jump_velocity
             set_state(PlayerState.JUMPING)
+        elif current_state == PlayerState.JUMPING:
+            velocity.y = jump_velocity
+            set_state(PlayerState.DOUBLE_JUMPING)
+        return # Prevent the rest of the movement code from running on jump input
+
+    # Get the input direction and handle the movement/deceleration.
+    var input_dir = Input.get_vector("Left", "Right", "ui_up", "ui_down")
+    var direction = Vector3(input_dir.x, 0, 0).normalized()
+    
+    if direction:
+        velocity.x = direction.x * speed
+        set_state(PlayerState.RUNNING)
+        # Update the target rotation
+        if input_dir.x > 0:
+            target_y_rotation = deg_to_rad(90) # Face right
+        elif input_dir.x < 0:
+            target_y_rotation = deg_to_rad(-90) # Face left
+    else:
+        velocity.x = move_toward(velocity.x, 0, speed)
+        # Only set to IDLE if the player is on the floor.
+        if is_on_floor():
+            set_state(PlayerState.IDLE)
+
+    # Smoothly rotate the character towards the target rotation.
+    suit_man_pivot.rotation.y = lerp_angle(suit_man_pivot.rotation.y, target_y_rotation, delta * rotation_speed)
+
+    move_and_slide()
 
 func on_animation_finished(anim_name):
-    # After a jump animation finishes, transition to the RUNNING state.
-    # This assumes the player will move after landing.
-    if anim_name == "jump" or anim_name == "doubleJump":
-        set_state(PlayerState.RUNNING)
+    if anim_name == "idle":
+        animation_player.play("idle")
 
-# New function to handle state transitions and play the corresponding animation.
+    if anim_name == "jump" or anim_name == "doubleJump":
+        if is_on_floor():
+            if velocity.x == 0:
+                set_state(PlayerState.IDLE)
+            else:
+                set_state(PlayerState.RUNNING)
+
 func set_state(new_state: PlayerState) -> void:
-    if current_state == new_state:
-        return # Do nothing if we're already in this state.
-    
+    if current_state == new_state: return
+
+    var is_jumping = animation_player.current_animation == "jump" or animation_player.current_animation == "doubleJump"
+    var wants_to_jump = new_state == PlayerState.JUMPING or new_state == PlayerState.DOUBLE_JUMPING
+
+    if is_jumping and not wants_to_jump: return
+
     current_state = new_state
-    
-    # Play the animation based on the new state.
+
+    # print(current_state)
+
     match current_state:
         PlayerState.IDLE:
             animation_player.play("idle")
