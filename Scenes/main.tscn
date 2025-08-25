@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://c506qiqf8wl75" path="res://Materials/Concrete/textures/concrete_floor_worn_001_rough_1k.jpg" id="3_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://by64xp5ycl0ah" path="res://Scenes/Player.tscn" id="4_rgh2o"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_hptm8"]
+size = Vector3(10, 10, 0.2)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_344ge"]
 albedo_texture = ExtResource("1_kln2b")
 roughness_texture = ExtResource("3_pbw6q")
@@ -13,30 +16,33 @@ normal_texture = ExtResource("2_rgh2o")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ynf5e"]
 material = SubResource("StandardMaterial3D_344ge")
-size = Vector3(10, 0.5, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_hptm8"]
-size = Vector3(10, 5, 0.2)
+size = Vector3(10, 1.2, 2)
 
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.955, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 5)
 projection = 1
-size = 4.865
+size = 6.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
-light_volumetric_fog_energy = 5.889
-
-[node name="Chunk" type="Node3D" parent="."]
-
-[node name="Floor" type="MeshInstance3D" parent="Chunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-mesh = SubResource("BoxMesh_ynf5e")
-skeleton = NodePath("../..")
-
-[node name="Wall" type="MeshInstance3D" parent="Chunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1)
-mesh = SubResource("BoxMesh_hptm8")
+transform = Transform3D(0.948324, -0.00276897, 0.317293, 0, 0.999962, 0.00872654, -0.317305, -0.00827558, 0.948288, 3.324, 1.055, -0.35)
+light_energy = 0.71
+shadow_enabled = true
+sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("4_rgh2o")]
+
+[node name="WallChunks" type="Node3D" parent="."]
+
+[node name="Plain" type="Node3D" parent="WallChunks"]
+
+[node name="Wall" type="MeshInstance3D" parent="WallChunks/Plain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -1)
+mesh = SubResource("BoxMesh_hptm8")
+skeleton = NodePath("")
+
+[node name="Floor" type="MeshInstance3D" parent="WallChunks/Plain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+mesh = SubResource("BoxMesh_ynf5e")
+skeleton = NodePath("../../..")

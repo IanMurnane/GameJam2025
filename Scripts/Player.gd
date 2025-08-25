@@ -2,15 +2,52 @@ extends CharacterBody3D
 
 @onready var animation_player = $SuitMan/AnimationPlayer
 
+# Define player states as an enum for clarity.
+enum PlayerState {
+    IDLE,
+    RUNNING,
+    JUMPING,
+    DOUBLE_JUMPING,
+}
+
+var current_state = PlayerState.IDLE
+
 func _ready():
-    # Connect the "animation_finished" signal to a function in this script.
+    # Connect the animation finished signal to handle state transitions.
     animation_player.animation_finished.connect(on_animation_finished)
+    animation_player.play("idle")
     
-    # Play the "mixamo_com" animation when the scene starts.
-    animation_player.play("Armature|mixamo_com|Layer0")
+func _physics_process(delta: float) -> void:
+    # Handle jump and double jump logic
+    if Input.is_action_just_pressed("Jump"):
+        # Check if the player is in the JUMPING state to allow a double jump.
+        if current_state == PlayerState.JUMPING:
+            set_state(PlayerState.DOUBLE_JUMPING)
+        # Otherwise, if the player is on the ground, allow a single jump.
+        else:
+            set_state(PlayerState.JUMPING)
 
 func on_animation_finished(anim_name):
-    # This function will be called when an animation finishes.
-    # It checks if the finished animation is the one we want to loop.
-    if anim_name == "Armature|mixamo_com|Layer0":
-        animation_player.play("Armature|mixamo_com|Layer0")
+    # After a jump animation finishes, transition to the RUNNING state.
+    # This assumes the player will move after landing.
+    if anim_name == "jump" or anim_name == "doubleJump":
+        set_state(PlayerState.RUNNING)
+
+# New function to handle state transitions and play the corresponding animation.
+func set_state(new_state: PlayerState) -> void:
+    if current_state == new_state:
+        return # Do nothing if we're already in this state.
+    
+    current_state = new_state
+    
+    # Play the animation based on the new state.
+    match current_state:
+        PlayerState.IDLE:
+            animation_player.play("idle")
+        PlayerState.RUNNING:
+            animation_player.play("run")
+        PlayerState.JUMPING:
+            animation_player.play("jump")
+        PlayerState.DOUBLE_JUMPING:
+            animation_player.play("doubleJump")
+            animation_player.seek(0.5)
