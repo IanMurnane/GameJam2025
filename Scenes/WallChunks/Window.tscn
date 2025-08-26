@@ -24,7 +24,7 @@ size = Vector3(10, 1.2, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_fu46b"]
 size = Vector3(10, 1.2, 2)
 
-[node name="Chunk" type="Node3D"]
+[node name="Window" type="Node3D"]
 
 [node name="Wall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 6, -1)

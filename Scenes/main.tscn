@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://csn4yvaeb5g7w"]
+[gd_scene load_steps=15 format=3 uid="uid://csn4yvaeb5g7w"]
 
 [ext_resource type="Script" uid="uid://dackfd7txtrug" path="res://Scripts/spawn_debris.gd" id="1_344ge"]
 [ext_resource type="Script" uid="uid://denb46fsnvtfv" path="res://Scripts/Camera.gd" id="2_50glp"]
@@ -108,6 +108,60 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109, 0, 0)
 show_title = false
 show_t_2_g_f = true
+
+[node name="Blank" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119, 0, 0)
+
+[node name="Blank9" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 0, 0)
+
+[node name="Window5" parent="WallChunks" instance=ExtResource("4_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, 0, 0)
+
+[node name="Blank10" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149, 0, 0)
+
+[node name="Window6" parent="WallChunks" instance=ExtResource("4_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159, 0, 0)
+
+[node name="Blank11" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169, 0, 0)
+
+[node name="Blank12" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179, 0, 0)
+
+[node name="Blank13" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189, 0, 0)
+
+[node name="Window7" parent="WallChunks" instance=ExtResource("4_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 199, 0, 0)
+
+[node name="Window8" parent="WallChunks" instance=ExtResource("4_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 208, 0, 0)
+
+[node name="Blank14" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218, 0, 0)
+
+[node name="Blank15" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 0, 0)
+
+[node name="Blank16" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 238, 0, 0)
+
+[node name="Window9" parent="WallChunks" instance=ExtResource("4_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 248, 0, 0)
+
+[node name="Blank17" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258, 0, 0)
+
+[node name="Window10" parent="WallChunks" instance=ExtResource("4_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 268, 0, 0)
+
+[node name="Blank18" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278, 0, 0)
+
+[node name="Blank19" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_v1gob")

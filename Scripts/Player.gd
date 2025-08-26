@@ -2,6 +2,9 @@ extends CharacterBody3D
 
 @onready var animation_player = $SuitMan/AnimationPlayer
 @onready var suit_man_pivot = $SuitMan
+@onready var collision = $Collision
+@onready var collisionJump = $CollisionJump
+@onready var collisionDouble = $CollisionDouble
 
 @onready var game_started = true
 
