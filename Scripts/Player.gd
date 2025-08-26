@@ -68,15 +68,14 @@ func _physics_process(delta: float) -> void:
     global_position.x = max(-5.0, global_position.x)
 
 func on_animation_finished(anim_name):
-    if anim_name == "idle":
-        animation_player.play("idle")
-
     if anim_name == "jump" or anim_name == "doubleJump":
-        if is_on_floor():
-            if velocity.x == 0:
-                set_state(PlayerState.IDLE)
-            else:
-                set_state(PlayerState.RUNNING)
+        if velocity.x == 0:
+            set_state(PlayerState.IDLE)
+        else:
+            set_state(PlayerState.RUNNING)
+        return
+
+    animation_player.play(anim_name)
 
 func set_state(new_state: PlayerState) -> void:
     if current_state == new_state: return
@@ -87,8 +86,6 @@ func set_state(new_state: PlayerState) -> void:
     if is_jumping and not wants_to_jump: return
 
     current_state = new_state
-
-    # print(current_state)
 
     match current_state:
         PlayerState.IDLE:
