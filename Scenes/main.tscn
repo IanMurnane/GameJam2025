@@ -82,7 +82,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
 [node name="Blank3" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 show_title = false
-show_t_2_g_g = true
 
 [node name="Window2" parent="WallChunks" instance=ExtResource("4_pbw6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
@@ -98,6 +97,7 @@ show_title = false
 [node name="Blank6" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 0)
 show_title = false
+show_t_2_g_e = true
 
 [node name="Blank7" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
@@ -112,31 +112,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99, 0, 0)
 [node name="Blank8" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109, 0, 0)
 show_title = false
-show_t_2_g_f = true
+show_t_2_g_d = true
 
 [node name="Blank" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119, 0, 0)
+show_title = false
 
 [node name="Blank9" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 0, 0)
+show_title = false
+show_t_2_g_c = true
 
 [node name="Window5" parent="WallChunks" instance=ExtResource("4_pbw6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139, 0, 0)
 
 [node name="Blank10" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149, 0, 0)
+show_title = false
 
 [node name="Window6" parent="WallChunks" instance=ExtResource("4_pbw6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159, 0, 0)
 
 [node name="Blank11" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169, 0, 0)
+show_title = false
 
 [node name="Blank12" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179, 0, 0)
+show_title = false
+show_t_2_g_b = true
 
 [node name="Blank13" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189, 0, 0)
+show_title = false
 
 [node name="Window7" parent="WallChunks" instance=ExtResource("4_pbw6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 199, 0, 0)
@@ -146,24 +154,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 208, 0, 0)
 
 [node name="Blank14" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218, 0, 0)
+show_title = false
+show_t_2_g_a = true
 
 [node name="Blank15" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 0, 0)
+show_title = false
 
 [node name="Blank16" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 238, 0, 0)
+show_title = false
 
 [node name="Window9" parent="WallChunks" instance=ExtResource("4_pbw6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 248, 0, 0)
 
 [node name="Blank17" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258, 0, 0)
+show_title = false
 
 [node name="Window10" parent="WallChunks" instance=ExtResource("4_pbw6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 268, 0, 0)
 
 [node name="Blank18" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278, 0, 0)
+show_title = false
 
 [node name="Blank19" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 0)

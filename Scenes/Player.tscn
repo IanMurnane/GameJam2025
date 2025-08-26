@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://by64xp5ycl0ah"]
+[gd_scene load_steps=7 format=3 uid="uid://by64xp5ycl0ah"]
 
 [ext_resource type="Script" uid="uid://d3bpwx6763or4" path="res://Scripts/Player.gd" id="1_kyqiw"]
 [ext_resource type="PackedScene" uid="uid://c5mx30gpab1s2" path="res://Models/SuitMan/man_in_black2.glb" id="2_kyqiw"]
+[ext_resource type="AudioStream" uid="uid://bqjv551rw0d2d" path="res://Sounds/jump.wav" id="3_gntrk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kyqiw"]
 size = Vector3(0.4, 1.8, 0.5)
@@ -29,3 +30,7 @@ shape = SubResource("BoxShape3D_dewec")
 
 [node name="SuitMan" parent="." instance=ExtResource("2_kyqiw")]
 transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, 0, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_gntrk")
+attenuation_model = 3

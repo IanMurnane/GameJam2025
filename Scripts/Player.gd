@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var collision = $Collision
 @onready var collisionJump = $CollisionJump
 @onready var collisionDouble = $CollisionDouble
+@onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 @onready var game_started = true
 
@@ -63,7 +64,7 @@ func _on_player_exited():
   pass
 
 func _physics_process(delta: float) -> void:
-  #print("Player position:", global_position)
+  print("Player position:", global_position)
   if out_of_time:
     if current_state != PlayerState.ANGRY:
       global_position.y = 0
@@ -84,6 +85,7 @@ func _physics_process(delta: float) -> void:
     if is_on_floor():
       velocity.y = jump_velocity if not is_speed_reduced else reduced_jump_velocity
       set_state(PlayerState.JUMPING)
+      audio_player.play()
     elif current_state == PlayerState.JUMPING:
       velocity.y = jump_velocity if not is_speed_reduced else reduced_jump_velocity
       set_state(PlayerState.DOUBLE_JUMPING)

@@ -226,7 +226,7 @@
     },
     {
       "scene": "airport_sign",
-      "position": 228
+      "position": 220
     },
     {
       "scene": "luggage",
@@ -272,7 +272,9 @@
     {
       "scene": "trash1",
       "position": 251
-    },
+    }
+
+    ,
     {
       "scene": "pizza_shop",
       "position": 258
@@ -291,16 +293,16 @@
       "position": 272
     },
     {
-      "scene": "people_checking",
+      "scene": "pizza_shop",
       "position": 280
+    },
+    {
+      "scene": "people_checking",
+      "position": 290
     }
     ,
     {
       "scene": "policeman",
-      "position": 282
-    },
-    {
-      "scene": "waving_lady",
       "position": 292
     }
 
