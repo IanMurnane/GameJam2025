@@ -174,7 +174,7 @@
     },
     {
       "scene": "luggage",
-      "position": 153
+      "position": 156
     },
     {
       "scene": "people_checking",
@@ -229,80 +229,8 @@
       "position": 228
     },
     {
-      "scene": "luggage",
-      "position": 225
-    },
-    {
-      "scene": "seats",
-      "position": 230
-    },
-    {
-      "scene": "seats",
-      "position": 231
-    },
-    {
-      "scene": "seats",
-      "position": 232
-    },
-    {
-      "scene": "seats",
-      "position": 233
-    },
-    {
-      "scene": "luggage",
-      "position": 240
-    }
-    ,
-    {
-      "scene": "trash1",
-      "position": 245
-    },
-    {
-      "scene": "trash2",
-      "position": 247
-    },
-    {
-      "scene": "trash1",
-      "position": 249
-    },
-    {
-      "scene": "trash2",
-      "position": 250
-    },
-    {
-      "scene": "trash1",
-      "position": 251
-    },
-    {
-      "scene": "pizza_shop",
-      "position": 258
-    }
-    ,
-    {
-      "scene": "seats",
-      "position": 268
-    },
-    {
-      "scene": "seats",
-      "position": 270
-    },
-    {
-      "scene": "seats",
-      "position": 272
-    },
-    {
-      "scene": "people_checking",
-      "position": 280
-    }
-    ,
-    {
-      "scene": "policeman",
-      "position": 282
-    },
-    {
       "scene": "waving_lady",
-      "position": 292
+      "position": 232
     }
-
   ]
 }

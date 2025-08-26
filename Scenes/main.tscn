@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://csn4yvaeb5g7w"]
+[gd_scene load_steps=19 format=3 uid="uid://csn4yvaeb5g7w"]
 
 [ext_resource type="Script" uid="uid://dackfd7txtrug" path="res://Scripts/spawn_debris.gd" id="1_344ge"]
 [ext_resource type="Script" uid="uid://denb46fsnvtfv" path="res://Scripts/Camera.gd" id="2_50glp"]
@@ -24,6 +24,9 @@ background_mode = 2
 sky = SubResource("Sky_pbw6q")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1ilt"]
+size = Vector3(0.5, 10, 1.65)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fdnlq"]
 size = Vector3(0.5, 10, 1.65)
 
 [node name="Node3D" type="Node3D"]
@@ -237,6 +240,13 @@ attenuation_model = 3
 stream = ExtResource("13_fdnlq")
 autoplay = true
 
+[node name="Area3D2" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 235, 0, 0)
+shape = SubResource("BoxShape3D_fdnlq")
+
 [connection signal="timeout" from="Camera3D/FlashTimer" to="Camera3D" method="on_flash_timer_timeout"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_body_entered_announcement"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_body_exited_announcement"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_finished"]

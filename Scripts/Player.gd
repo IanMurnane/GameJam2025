@@ -18,6 +18,7 @@ enum PlayerState {
   JUMPING,
   DOUBLE_JUMPING,
   ANGRY,
+  FINISHED,
 }
 
 var current_state = PlayerState.INIT
@@ -46,6 +47,11 @@ func _ready():
   EventBus.player_entered.connect(_on_player_entered)
   EventBus.player_exited.connect(_on_player_exited)
   EventBus.out_of_time.connect(_out_of_time)
+  EventBus.finished.connect(_finished)
+
+func _finished():
+  set_state(PlayerState.FINISHED)
+  out_of_time = true
 
 func _out_of_time():
   set_state(PlayerState.ANGRY)
@@ -64,7 +70,7 @@ func _on_player_exited():
   pass
 
 func _physics_process(delta: float) -> void:
-  print("Player position:", global_position)
+  #print("Player position:", global_position)
   if out_of_time:
     if current_state != PlayerState.ANGRY:
       global_position.y = 0
@@ -165,3 +171,8 @@ func set_state(new_state: PlayerState) -> void:
       collisionJump.disabled = true
       collisionDouble.disabled = true
       animation_player.play("angry")
+    PlayerState.FINISHED:
+      collision.disabled = false
+      collisionJump.disabled = true
+      collisionDouble.disabled = true
+      animation_player.play("dancing")

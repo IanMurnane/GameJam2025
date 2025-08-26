@@ -48,3 +48,6 @@ func _on_body_exited_announcement(body: Node3D) -> void:
     # When the player leaves the area, reset the flag so the sound can be played again.
     if body.is_in_group("player"):
         can_play_sound = true
+
+func _on_finished(body: Node3D) -> void:
+    EventBus.player_entered.emit()
