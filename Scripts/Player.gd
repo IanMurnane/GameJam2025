@@ -64,6 +64,8 @@ func _physics_process(delta: float) -> void:
     suit_man_pivot.rotation.y = lerp_angle(suit_man_pivot.rotation.y, target_y_rotation, delta * rotation_speed)
 
     move_and_slide()
+    
+    global_position.x = max(-5.0, global_position.x)
 
 func on_animation_finished(anim_name):
     if anim_name == "idle":
