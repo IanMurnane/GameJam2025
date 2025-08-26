@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cod0ste8204p4"]
+[gd_scene load_steps=11 format=3 uid="uid://csn4yvaeb5g7w"]
 
 [ext_resource type="Script" uid="uid://denb46fsnvtfv" path="res://Scripts/Camera.gd" id="2_50glp"]
-[ext_resource type="PackedScene" uid="uid://bclh3nd1tlk8l" path="res://Scenes/WallChunks/Intro.tscn" id="2_kln2b"]
-[ext_resource type="PackedScene" uid="uid://c0grt2wucpu2d" path="res://Scenes/WallChunks/Plain.tscn" id="3_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://bclh3nd1tlk8l" path="res://Scenes/WallChunks/Blank.tscn" id="2_kln2b"]
 [ext_resource type="PackedScene" uid="uid://bj8le8236t7ru" path="res://Scenes/WallChunks/Window.tscn" id="4_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://by64xp5ycl0ah" path="res://Scenes/Player.tscn" id="4_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://dujiqtviwtfy5" path="res://Models/boeing_747-100.glb" id="5_pbw6q"]
+[ext_resource type="PackedScene" uid="uid://bbmwt8u56n4tl" path="res://Models/johannesburg_airport_tower.glb" id="6_jw32o"]
+[ext_resource type="PackedScene" uid="uid://cypfh57b40iwh" path="res://Models/airport_catering_truck.glb" id="7_50glp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rgh2o"]
 
@@ -35,35 +36,88 @@ directional_shadow_mode = 1
 directional_shadow_split_1 = 0.038
 sky_mode = 1
 
+[node name="StrobeYellow" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(0.964629, 0.0533903, -0.258149, -0.076954, -0.879588, -0.469472, -0.25213, 0.472731, -0.844367, 0, -12.63, -14.1233)
+visible = false
+light_color = Color(1, 1, 0, 1)
+light_energy = 4.556
+light_specular = 0.1
+shadow_opacity = 0.19
+shadow_caster_mask = 4294966273
+directional_shadow_mode = 1
+directional_shadow_split_1 = 0.038
+sky_mode = 1
+
+[node name="FlashTimer" type="Timer" parent="Camera3D"]
+autostart = true
+
 [node name="Player" parent="." instance=ExtResource("4_rgh2o")]
 
 [node name="WallChunks" type="Node3D" parent="."]
 
-[node name="Plain0" parent="WallChunks" instance=ExtResource("3_rgh2o")]
+[node name="Blank0" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+show_title = false
 
-[node name="Intro" parent="WallChunks" instance=ExtResource("2_kln2b")]
+[node name="Title" parent="WallChunks" instance=ExtResource("2_kln2b")]
 
-[node name="Plain" parent="WallChunks" instance=ExtResource("3_rgh2o")]
+[node name="Blank2" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+show_title = false
 
 [node name="Window" parent="WallChunks" instance=ExtResource("4_pbw6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
 
-[node name="Plain2" parent="WallChunks" instance=ExtResource("3_rgh2o")]
+[node name="Blank3" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+show_title = false
+show_t_2_g_g = true
 
 [node name="Window2" parent="WallChunks" instance=ExtResource("4_pbw6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 
-[node name="Plain3" parent="WallChunks" instance=ExtResource("3_rgh2o")]
+[node name="Blank4" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+show_title = false
+
+[node name="Blank5" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+show_title = false
+
+[node name="Blank6" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 0)
+show_title = false
+
+[node name="Blank7" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
+show_title = false
+
+[node name="Window4" parent="WallChunks" instance=ExtResource("4_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 0)
+
+[node name="Window3" parent="WallChunks" instance=ExtResource("4_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99, 0, 0)
+
+[node name="Blank8" parent="WallChunks" instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109, 0, 0)
+show_title = false
+show_t_2_g_f = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_v1gob")
 
-[node name="Jet" parent="." instance=ExtResource("5_pbw6q")]
+[node name="Outside" type="Node3D" parent="."]
+
+[node name="Jet" parent="Outside" instance=ExtResource("5_pbw6q")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 24.9287, 2.56, -26.955)
 
-[node name="Jet2" parent="." instance=ExtResource("5_pbw6q")]
+[node name="Jet2" parent="Outside" instance=ExtResource("5_pbw6q")]
 transform = Transform3D(-0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, 42.6992, 3.81539, -26.955)
+
+[node name="Tower" parent="Outside" instance=ExtResource("6_jw32o")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 87.0257, -1.29329, -100)
+
+[node name="CateringTruck" parent="Outside" instance=ExtResource("7_50glp")]
+transform = Transform3D(-4.80825e-08, 0, -1.1, 0, 1.1, 0, 1.1, 0, -4.80825e-08, 92.8574, 0.259741, -10)
+
+[connection signal="timeout" from="Camera3D/FlashTimer" to="Camera3D" method="on_flash_timer_timeout"]
