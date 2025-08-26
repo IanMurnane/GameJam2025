@@ -50,4 +50,4 @@ func _on_body_exited_announcement(body: Node3D) -> void:
         can_play_sound = true
 
 func _on_finished(body: Node3D) -> void:
-    EventBus.player_entered.emit()
+    EventBus.finished.emit()
