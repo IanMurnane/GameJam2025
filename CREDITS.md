@@ -13,3 +13,5 @@ https://sketchfab.com/3d-models/boeing-747-100-6ef67f9995d345ddaee9ec845ac10b69
 https://sketchfab.com/3d-models/johannesburg-airport-tower-73b6b31df5fc444da63e64b708e97c3e
 
 https://sketchfab.com/3d-models/worker-taking-a-walk-519bb87dae9142ae8d0a726d9ebd7e36
+
+https://sketchfab.com/3d-models/airport-sign-faa5e29df0884ca9a3f640dfd352d24e

@@ -10,6 +10,7 @@ enum PlayerState {
   RUNNING,
   JUMPING,
   DOUBLE_JUMPING,
+  ANGRY,
 }
 
 var current_state = PlayerState.INIT
@@ -18,6 +19,7 @@ var reduced_speed = 1.2 # Speed reduction factor when needed
 var jump_velocity = 10.0 # How high the player jumps
 var reduced_jump_velocity = 1.5
 var is_speed_reduced = false
+var out_of_time = false
 
 # New variable for smooth rotation
 var target_y_rotation = 0.0
@@ -32,6 +34,11 @@ func _ready():
 
   EventBus.player_entered.connect(_on_player_entered)
   EventBus.player_exited.connect(_on_player_exited)
+  EventBus.out_of_time.connect(_out_of_time)
+
+func _out_of_time():
+  set_state(PlayerState.ANGRY)
+  out_of_time = true
 
 func _on_player_entered():
   #print("Player entered the area!")
@@ -44,6 +51,17 @@ func _on_player_exited():
   pass
 
 func _physics_process(delta: float) -> void:
+  if out_of_time:
+    if current_state != PlayerState.ANGRY:
+      global_position.y = 0
+      set_state(PlayerState.ANGRY)
+    if Input.is_action_just_pressed("Jump"):
+      set_state(PlayerState.IDLE)
+      global_position.x = 0
+      global_position.y = 0
+      out_of_time = false
+    return
+  
   # Add the gravity.
   if not is_on_floor():
     velocity.y -= gravity * delta
@@ -98,7 +116,6 @@ func set_state(new_state: PlayerState) -> void:
 
   var is_jumping = animation_player.current_animation == "jump" or animation_player.current_animation == "doubleJump"
   var wants_to_jump = new_state == PlayerState.JUMPING or new_state == PlayerState.DOUBLE_JUMPING
-
   if is_jumping and not wants_to_jump: return
 
   current_state = new_state
@@ -113,3 +130,5 @@ func set_state(new_state: PlayerState) -> void:
     PlayerState.DOUBLE_JUMPING:
       animation_player.play("doubleJump")
       animation_player.seek(0.5)
+    PlayerState.ANGRY:
+      animation_player.play("angry")

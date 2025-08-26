@@ -1,14 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://csn4yvaeb5g7w"]
+[gd_scene load_steps=14 format=3 uid="uid://csn4yvaeb5g7w"]
 
 [ext_resource type="Script" uid="uid://denb46fsnvtfv" path="res://Scripts/Camera.gd" id="2_50glp"]
 [ext_resource type="PackedScene" uid="uid://bclh3nd1tlk8l" path="res://Scenes/WallChunks/Blank.tscn" id="2_kln2b"]
 [ext_resource type="PackedScene" uid="uid://bj8le8236t7ru" path="res://Scenes/WallChunks/Window.tscn" id="4_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://by64xp5ycl0ah" path="res://Scenes/Player.tscn" id="4_rgh2o"]
-[ext_resource type="PackedScene" uid="uid://dakpe6j2qlhab" path="res://Scenes/Debris/airport_sign.tscn" id="4_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://dujiqtviwtfy5" path="res://Models/boeing_747-100.glb" id="5_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://bbmwt8u56n4tl" path="res://Models/johannesburg_airport_tower.glb" id="6_jw32o"]
 [ext_resource type="PackedScene" uid="uid://cypfh57b40iwh" path="res://Models/airport_catering_truck.glb" id="7_50glp"]
 [ext_resource type="PackedScene" uid="uid://b45mpcaur7ghw" path="res://Models/Outside Worker/worker_taking_a_walk.glb" id="8_344ge"]
+[ext_resource type="Script" uid="uid://clhdb2x3rngxu" path="res://Scripts/GuiTimer.gd" id="9_hptm8"]
+[ext_resource type="FontFile" uid="uid://cl7u1nuee58ng" path="res://Fonts/BlackOpsOne-Regular.ttf" id="9_ynf5e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rgh2o"]
 
@@ -61,9 +62,6 @@ axis_lock_linear_z = true
 [node name="Blank0" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 show_title = false
-
-[node name="AirportSign" parent="WallChunks" instance=ExtResource("4_ynf5e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [node name="Title" parent="WallChunks" instance=ExtResource("2_kln2b")]
 
@@ -128,5 +126,24 @@ transform = Transform3D(-4.80825e-08, 0, -1.1, 0, 1.1, 0, 1.1, 0, -4.80825e-08, 
 
 [node name="OutsideWorker" parent="Outside" instance=ExtResource("8_344ge")]
 transform = Transform3D(0.861629, 0, 0.507538, 0, 1, 0, -0.507538, 0, 0.861629, 97.484, 0.05, -11.91)
+
+[node name="GUI" type="CanvasLayer" parent="."]
+script = ExtResource("9_hptm8")
+
+[node name="Label" type="Label" parent="GUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -146.0
+offset_top = 34.0
+offset_right = -29.0
+offset_bottom = 105.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.612299, 1.50409e-06, 5.77569e-07, 1)
+theme_override_fonts/font = ExtResource("9_ynf5e")
+theme_override_font_sizes/font_size = 60
+text = "60"
+
+[node name="Timer" type="Timer" parent="GUI"]
 
 [connection signal="timeout" from="Camera3D/FlashTimer" to="Camera3D" method="on_flash_timer_timeout"]
