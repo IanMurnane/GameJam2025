@@ -1,5 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://csn4yvaeb5g7w"]
 
+[ext_resource type="Script" uid="uid://dackfd7txtrug" path="res://Scripts/spawn_debris.gd" id="1_344ge"]
 [ext_resource type="Script" uid="uid://denb46fsnvtfv" path="res://Scripts/Camera.gd" id="2_50glp"]
 [ext_resource type="PackedScene" uid="uid://bclh3nd1tlk8l" path="res://Scenes/WallChunks/Blank.tscn" id="2_kln2b"]
 [ext_resource type="PackedScene" uid="uid://bj8le8236t7ru" path="res://Scenes/WallChunks/Window.tscn" id="4_pbw6q"]
@@ -21,6 +22,7 @@ background_mode = 2
 sky = SubResource("Sky_pbw6q")
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_344ge")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 5)

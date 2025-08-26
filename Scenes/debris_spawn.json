@@ -1,24 +1,53 @@
 {
   "debris": [
     {
-      "scene": "metal_detector",
-      "position": 1
-    },
-    { "scene": "seats", "position": 2 },
-    { "scene": "trash1", "position": 2 },
-    {
-      "scene": "trash2",
-      "position": -2
+      "scene": "trash1",
+      "position": 9
     },
     {
       "scene": "trash2",
-      "position": 2
+      "position": 15
     },
-    { "scene": "seats", "position": 5 },
-    { "scene": "trash1", "position": 3 },
+    {
+      "scene": "seats",
+      "position": 20
+    },
+    {
+      "scene": "trash1",
+      "position": 28
+    },
+    {
+      "scene": "seats",
+      "position": 35
+    },
     {
       "scene": "trash2",
-      "position": 10
+      "position": 45
+    },
+    {
+      "scene": "people_checking",
+      "position": 60
+    },
+    {
+      "scene": "policeman",
+      "position": 62
+    },
+    {
+      "scene": "pizza_shop",
+      "position": 80
+    },
+
+    {
+      "scene": "seats",
+      "position": 95
+    },
+    {
+      "scene": "seats",
+      "position": 96
+    },
+    {
+      "scene": "trash1",
+      "position": 99
     }
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "debris": [
+    { "scene": "trash2", "position": 12 },
+    { "scene": "seats", "position": 23 },
+    { "scene": "pizza_shop", "position": 37 },
+    { "scene": "bench", "position": 41 },
+    { "scene": "lamp_post", "position": 56 },
+    { "scene": "people_checking", "position": 67 },
+    { "scene": "policeman", "position": 72 },
+    { "scene": "trash1", "position": 85 }
+  ]
+}
