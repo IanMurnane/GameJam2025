@@ -1,36 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://cod0ste8204p4"]
+[gd_scene load_steps=10 format=3 uid="uid://cod0ste8204p4"]
 
-[ext_resource type="Texture2D" uid="uid://by1lp1a6xgdxn" path="res://Materials/Concrete/textures/concrete_floor_worn_001_diff_1k.jpg" id="1_kln2b"]
-[ext_resource type="Script" uid="uid://dackfd7txtrug" path="res://Scripts/spawn_debris.gd" id="1_kry3j"]
-[ext_resource type="Texture2D" uid="uid://b4me3und5041j" path="res://Images/Title.png" id="2_pbw6q"]
-[ext_resource type="Texture2D" uid="uid://c3b7mg34npfao" path="res://Materials/Concrete/textures/concrete_floor_worn_001_nor_gl_1k.jpg" id="2_rgh2o"]
-[ext_resource type="Texture2D" uid="uid://c506qiqf8wl75" path="res://Materials/Concrete/textures/concrete_floor_worn_001_rough_1k.jpg" id="3_pbw6q"]
+[ext_resource type="Script" uid="uid://denb46fsnvtfv" path="res://Scripts/Camera.gd" id="2_50glp"]
+[ext_resource type="PackedScene" uid="uid://bclh3nd1tlk8l" path="res://Scenes/WallChunks/Intro.tscn" id="2_kln2b"]
+[ext_resource type="PackedScene" uid="uid://c0grt2wucpu2d" path="res://Scenes/WallChunks/Plain.tscn" id="3_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://bj8le8236t7ru" path="res://Scenes/WallChunks/Window.tscn" id="4_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://by64xp5ycl0ah" path="res://Scenes/Player.tscn" id="4_rgh2o"]
-[ext_resource type="PackedScene" uid="uid://do500g2iq34j6" path="res://Scenes/Debris/policeman.tscn" id="7_6bp64"]
-[ext_resource type="PackedScene" uid="uid://uq3qd26okjgp" path="res://Scenes/Debris/people.tscn" id="8_344ge"]
+[ext_resource type="PackedScene" uid="uid://dujiqtviwtfy5" path="res://Models/boeing_747-100.glb" id="5_pbw6q"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_hptm8"]
-size = Vector3(10, 10, 0.2)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rgh2o"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_v1gob"]
-size = Vector2(6, 6)
+[sub_resource type="Sky" id="Sky_pbw6q"]
+sky_material = SubResource("ProceduralSkyMaterial_rgh2o")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jw32o"]
-transparency = 1
-albedo_texture = ExtResource("2_pbw6q")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_344ge"]
-albedo_texture = ExtResource("1_kln2b")
-roughness_texture = ExtResource("3_pbw6q")
-normal_enabled = true
-normal_texture = ExtResource("2_rgh2o")
-
-[sub_resource type="BoxMesh" id="BoxMesh_ynf5e"]
-material = SubResource("StandardMaterial3D_344ge")
-size = Vector3(10, 1.2, 2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rgh2o"]
-size = Vector3(10, 1.2, 2)
+[sub_resource type="Environment" id="Environment_v1gob"]
+background_mode = 2
+sky = SubResource("Sky_pbw6q")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_kry3j")
@@ -39,11 +23,17 @@ script = ExtResource("1_kry3j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 5)
 projection = 1
 size = 6.0
+script = ExtResource("2_50glp")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
-transform = Transform3D(0.948324, -0.00276897, 0.317293, 0, 0.999962, 0.00872654, -0.317305, -0.00827558, 0.948288, 3.324, 1.055, -0.35)
-light_energy = 0.71
+transform = Transform3D(0.956305, -0.0280226, 0.291026, 0, 0.995396, 0.0958457, -0.292372, -0.0916577, 0.951902, 0, 0, 0)
+light_energy = 1.667
+light_specular = 0.1
 shadow_enabled = true
+shadow_opacity = 0.19
+shadow_caster_mask = 4294966273
+directional_shadow_mode = 1
+directional_shadow_split_1 = 0.038
 sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("4_rgh2o")]
@@ -51,33 +41,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0526, 0, 0)
 
 [node name="WallChunks" type="Node3D" parent="."]
 
-[node name="Plain" type="Node3D" parent="WallChunks"]
+[node name="Plain0" parent="WallChunks" instance=ExtResource("3_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
-[node name="Wall" type="MeshInstance3D" parent="WallChunks/Plain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -1)
-mesh = SubResource("BoxMesh_hptm8")
-skeleton = NodePath("")
+[node name="Intro" parent="WallChunks" instance=ExtResource("2_kln2b")]
 
-[node name="Title" type="MeshInstance3D" parent="WallChunks/Plain/Wall"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.03, -2.36, 0.2)
-mesh = SubResource("PlaneMesh_v1gob")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_jw32o")
+[node name="Plain" parent="WallChunks" instance=ExtResource("3_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
-[node name="Floor" type="MeshInstance3D" parent="WallChunks/Plain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
-mesh = SubResource("BoxMesh_ynf5e")
-skeleton = NodePath("../../..")
+[node name="Window" parent="WallChunks" instance=ExtResource("4_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="WallChunks/Plain/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+[node name="Plain2" parent="WallChunks" instance=ExtResource("3_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WallChunks/Plain/Floor/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
-shape = SubResource("BoxShape3D_rgh2o")
+[node name="Window2" parent="WallChunks" instance=ExtResource("4_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 
-[node name="Policeman" parent="." instance=ExtResource("7_6bp64")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.32289, 0, -0.195101)
+[node name="Plain3" parent="WallChunks" instance=ExtResource("3_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
 
-[node name="People" parent="." instance=ExtResource("8_344ge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.335507, 0.0343409, 0.374075)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v1gob")
+
+[node name="Jet" parent="." instance=ExtResource("5_pbw6q")]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 24.9287, 2.56, -26.955)
+
+[node name="Jet2" parent="." instance=ExtResource("5_pbw6q")]
+transform = Transform3D(-0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, 42.6992, 3.81539, -26.955)

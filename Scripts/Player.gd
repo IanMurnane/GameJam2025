@@ -46,58 +46,54 @@ func _on_player_exited():
 	pass
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
+    # Add the gravity.
+    if not is_on_floor():
+        velocity.y -= gravity * delta
 
-	# Handle jump and double jump logic
-	if Input.is_action_just_pressed("Jump"):
-		if is_on_floor():
-			velocity.y = jump_velocity if not is_speed_reduced else reduced_jump_velocity
-			set_state(PlayerState.JUMPING)
-		elif current_state == PlayerState.JUMPING:
-			velocity.y = jump_velocity if not is_speed_reduced else reduced_jump_velocity
-			set_state(PlayerState.DOUBLE_JUMPING)
-		return # Prevent the rest of the movement code from running on jump input
+    # Handle jump and double jump logic
+    if Input.is_action_just_pressed("Jump"):
+        if is_on_floor():
+            velocity.y = jump_velocity
+            set_state(PlayerState.JUMPING)
+        elif current_state == PlayerState.JUMPING:
+            velocity.y = jump_velocity
+            set_state(PlayerState.DOUBLE_JUMPING)
+        return # Prevent the rest of the movement code from running on jump input
 
-	# Get the input direction and handle the movement/deceleration.
-	var input_dir = Input.get_vector("Left", "Right", "ui_up", "ui_down")
-	var direction = Vector3(input_dir.x, 0, 0).normalized()
+    # Get the input direction and handle the movement/deceleration.
+    var input_dir = Input.get_vector("Left", "Right", "ui_up", "ui_down")
+    var direction = Vector3(input_dir.x, 0, 0).normalized()
+    
+    if direction:
+        velocity.x = direction.x * speed
+        set_state(PlayerState.RUNNING)
+        # Update the target rotation
+        if input_dir.x > 0:
+            target_y_rotation = deg_to_rad(90) # Face right
+        elif input_dir.x < 0:
+            target_y_rotation = deg_to_rad(-90) # Face left
+    else:
+        velocity.x = move_toward(velocity.x, 0, speed)
+        # Only set to IDLE if the player is on the floor.
+        if is_on_floor():
+            set_state(PlayerState.IDLE)
 
-	if direction:
-		velocity.x = direction.x * (reduced_speed if is_speed_reduced else speed)
-		#if is_speed_reduced:
-			#velocity.x = direction.x * reduced_speed
-			#print("speed is reduced")
-		#else:
-			#velocity.x = direction.x * speed
-		set_state(PlayerState.RUNNING)
-		# Update the target rotation
-		if input_dir.x > 0:
-			target_y_rotation = deg_to_rad(90) # Face right
-		elif input_dir.x < 0:
-			target_y_rotation = deg_to_rad(-90) # Face left
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		# Only set to IDLE if the player is on the floor.
-		if is_on_floor():
-			set_state(PlayerState.IDLE)
+    # Smoothly rotate the character towards the target rotation.
+    suit_man_pivot.rotation.y = lerp_angle(suit_man_pivot.rotation.y, target_y_rotation, delta * rotation_speed)
 
-	# Smoothly rotate the character towards the target rotation.
-	suit_man_pivot.rotation.y = lerp_angle(suit_man_pivot.rotation.y, target_y_rotation, delta * rotation_speed)
-
-	move_and_slide()
+    move_and_slide()
+    
+    global_position.x = max(-5.0, global_position.x)
 
 func on_animation_finished(anim_name):
-	if anim_name == "idle":
-		animation_player.play("idle")
+    if anim_name == "jump" or anim_name == "doubleJump":
+        if velocity.x == 0:
+            set_state(PlayerState.IDLE)
+        else:
+            set_state(PlayerState.RUNNING)
+        return
 
-	if anim_name == "jump" or anim_name == "doubleJump":
-		if is_on_floor():
-			if velocity.x == 0:
-				set_state(PlayerState.IDLE)
-			else:
-				set_state(PlayerState.RUNNING)
+    animation_player.play(anim_name)
 
 func set_state(new_state: PlayerState) -> void:
 	if current_state == new_state: return
@@ -109,15 +105,15 @@ func set_state(new_state: PlayerState) -> void:
 
 	current_state = new_state
 
-	# print(current_state)
 
-	match current_state:
-		PlayerState.IDLE:
-			animation_player.play("idle")
-		PlayerState.RUNNING:
-			animation_player.play("run")
-		PlayerState.JUMPING:
-			animation_player.play("jump")
-		PlayerState.DOUBLE_JUMPING:
-			animation_player.play("doubleJump")
-			animation_player.seek(0.5)
+    match current_state:
+        PlayerState.IDLE:
+            animation_player.play("idle")
+        PlayerState.RUNNING:
+            animation_player.play("run")
+        PlayerState.JUMPING:
+            animation_player.play("jump")
+        PlayerState.DOUBLE_JUMPING:
+            animation_player.play("doubleJump")
+            animation_player.seek(0.5)
+
