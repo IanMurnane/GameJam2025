@@ -1,12 +1,120 @@
 {
-  "debris": [
-    { "scene": "trash2", "position": 12 },
-    { "scene": "seats", "position": 23 },
-    { "scene": "pizza_shop", "position": 37 },
-    { "scene": "bench", "position": 41 },
-    { "scene": "lamp_post", "position": 56 },
-    { "scene": "people_checking", "position": 67 },
-    { "scene": "policeman", "position": 72 },
-    { "scene": "trash1", "position": 85 }
-  ]
+    "debris": [
+        {
+            "scene": "trash2",
+            "position": 9
+        },
+        {
+            "scene": "seats",
+            "position": 15
+        },
+        {
+            "scene": "airport_sign",
+            "position": 20
+        },
+        {
+            "scene": "trash2",
+            "position": 25
+        },
+        {
+            "scene": "seats",
+            "position": 26
+        },
+        {
+            "scene": "pizza_shop",
+            "position": 28
+        },
+        {
+            "scene": "seats",
+            "position": 32
+        },
+        {
+            "scene": "trash1",
+            "position": 35
+        },
+        {
+            "scene": "airport_sign",
+            "position": 39
+        },
+        {
+            "scene": "seats",
+            "position": 40
+        },
+        {
+            "scene": "trash2",
+            "position": 45
+        },
+        {
+            "scene": "seats",
+            "position": 50
+        },
+        {
+            "scene": "trash2",
+            "position": 60
+        },
+        {
+            "scene": "seats",
+            "position": 62
+        },
+        {
+            "scene": "people_checking",
+            "position": 66
+        },
+        {
+            "scene": "trash1",
+            "position": 67
+        },
+        {
+            "scene": "policeman",
+            "position": 68
+        },
+        {
+            "scene": "trash2",
+            "position": 69
+        },
+        {
+            "scene": "seats",
+            "position": 70
+        },
+        {
+            "scene": "airport_sign",
+            "position": 80
+        },
+        {
+            "scene": "trash2",
+            "position": 80
+        },
+        {
+            "scene": "pizza_shop",
+            "position": 82
+        },
+        {
+            "scene": "trash1",
+            "position": 84
+        },
+        {
+            "scene": "seats",
+            "position": 86
+        },
+        {
+            "scene": "trash2",
+            "position": 88
+        },
+        {
+            "scene": "trash1",
+            "position": 90
+        },
+        {
+            "scene": "airport_sign",
+            "position": 95
+        },
+        {
+            "scene": "seats",
+            "position": 96
+        },
+        {
+            "scene": "trash2",
+            "position": 99
+        }
+    ]
 }

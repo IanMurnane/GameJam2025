@@ -23,7 +23,7 @@ enum PlayerState {
 }
 
 var current_state = PlayerState.INIT
-var speed = 5.0 # Player's movement speed
+var speed = 20.0 # Player's movement speed
 var reduced_speed = 1.2 # Speed reduction factor when needed
 var jump_velocity = 10.0 # How high the player jumps
 var reduced_jump_velocity = 1.5
@@ -53,7 +53,8 @@ func _out_of_time():
 func _on_player_entered():
   if game_started:
     # print("Player entered the area!")
-    is_speed_reduced = true
+    # is_speed_reduced = true
+    pass
   pass
 
 func _on_player_exited():
@@ -62,6 +63,7 @@ func _on_player_exited():
   pass
 
 func _physics_process(delta: float) -> void:
+  print("Player position:", global_position)
   if out_of_time:
     if current_state != PlayerState.ANGRY:
       global_position.y = 0

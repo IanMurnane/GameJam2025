@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bbmwt8u56n4tl" path="res://Models/johannesburg_airport_tower.glb" id="6_jw32o"]
 [ext_resource type="PackedScene" uid="uid://cypfh57b40iwh" path="res://Models/airport_catering_truck.glb" id="7_50glp"]
 [ext_resource type="PackedScene" uid="uid://b45mpcaur7ghw" path="res://Models/Outside Worker/worker_taking_a_walk.glb" id="8_344ge"]
-[ext_resource type="Script" uid="uid://clhdb2x3rngxu" path="res://Scripts/GuiTimer.gd" id="9_hptm8"]
+[ext_resource type="Script" path="res://Scripts/GuiTimer.gd" id="9_hptm8"]
 [ext_resource type="FontFile" uid="uid://cl7u1nuee58ng" path="res://Fonts/BlackOpsOne-Regular.ttf" id="9_ynf5e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rgh2o"]
@@ -26,7 +26,6 @@ script = ExtResource("1_344ge")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 5)
-projection = 1
 size = 6.0
 script = ExtResource("2_50glp")
 
