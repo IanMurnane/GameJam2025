@@ -1,6 +1,10 @@
 extends Node3D
 
+@onready var audio_player: AudioStreamPlayer3D = $AnnounceAudio
+
 const JSON_PATH := "res://Scenes/debris_spawn.json"
+
+var can_play_sound = true
 
 func _ready():
   spawn_debris_from_json()
@@ -31,3 +35,16 @@ func spawn_debris_from_json():
         # Use only the integer value for X, Y and Z are zero
         debris_instance.position = Vector3(int(pos_val), 0, 0)
         add_child(debris_instance)
+
+
+func _on_body_entered_announcement(body: Node3D) -> void:
+    # Check if the entered body is the player and the sound is not currently playing.
+    if body.is_in_group("player") and can_play_sound:
+        audio_player.play()
+        # Set the flag to false to prevent the sound from re-triggering immediately.
+        can_play_sound = false
+
+func _on_body_exited_announcement(body: Node3D) -> void:
+    # When the player leaves the area, reset the flag so the sound can be played again.
+    if body.is_in_group("player"):
+        can_play_sound = true

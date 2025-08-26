@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://csn4yvaeb5g7w"]
+[gd_scene load_steps=18 format=3 uid="uid://csn4yvaeb5g7w"]
 
 [ext_resource type="Script" uid="uid://dackfd7txtrug" path="res://Scripts/spawn_debris.gd" id="1_344ge"]
 [ext_resource type="Script" uid="uid://denb46fsnvtfv" path="res://Scripts/Camera.gd" id="2_50glp"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b45mpcaur7ghw" path="res://Models/Outside Worker/worker_taking_a_walk.glb" id="8_344ge"]
 [ext_resource type="Script" uid="uid://clhdb2x3rngxu" path="res://Scripts/GuiTimer.gd" id="9_hptm8"]
 [ext_resource type="FontFile" uid="uid://cl7u1nuee58ng" path="res://Fonts/BlackOpsOne-Regular.ttf" id="9_ynf5e"]
+[ext_resource type="AudioStream" uid="uid://baps84duyw8n5" path="res://Sounds/last_call.wav" id="12_6iyac"]
+[ext_resource type="AudioStream" uid="uid://ces4m5styqku7" path="res://Sounds/intro.wav" id="13_fdnlq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rgh2o"]
 
@@ -20,6 +22,9 @@ sky_material = SubResource("ProceduralSkyMaterial_rgh2o")
 [sub_resource type="Environment" id="Environment_v1gob"]
 background_mode = 2
 sky = SubResource("Sky_pbw6q")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d1ilt"]
+size = Vector3(0.5, 10, 1.65)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_344ge")
@@ -202,4 +207,22 @@ text = "60"
 
 [node name="Timer" type="Timer" parent="GUI"]
 
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0.03)
+shape = SubResource("BoxShape3D_d1ilt")
+
+[node name="AnnounceAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_6iyac")
+attenuation_model = 3
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("13_fdnlq")
+autoplay = true
+
 [connection signal="timeout" from="Camera3D/FlashTimer" to="Camera3D" method="on_flash_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered_announcement"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_body_exited_announcement"]
