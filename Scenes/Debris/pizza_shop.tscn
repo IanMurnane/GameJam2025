@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dibmxhdq7ngke"]
 
-[ext_resource type="PackedScene" uid="uid://bsvpir2kklyux" path="res://Models/Trash Cans/restaurant_table_setprops.glb" id="1_m2rhc"]
+[ext_resource type="PackedScene" uid="uid://bsvpir2kklyux" path="res://Models/Restaurant/restaurant_table_setprops.glb" id="1_m2rhc"]
 [ext_resource type="Script" uid="uid://cvxptk4h2d21l" path="res://Scripts/pizza_shop.gd" id="1_v5km6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m2rhc"]
