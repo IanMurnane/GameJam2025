@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://tu2den7v6tpv"]
 
-[ext_resource type="PackedScene" uid="uid://b3gs4xp2mf15w" path="res://Models/Trash Cans/trash_can1.glb" id="1_gfmfp"]
+[ext_resource type="PackedScene" uid="uid://cvq410so2urtd" path="res://Models/Trash Can/trash_can1.glb" id="1_pvsyy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pvsyy"]
 size = Vector3(0.322206, 0.415396, 0.334204)
@@ -13,5 +13,5 @@ size = Vector3(0.322206, 0.415396, 0.334204)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00587225, 0.210265, 0.0166712)
 shape = SubResource("BoxShape3D_pvsyy")
 
-[node name="trash_can1" parent="StaticBody3D" instance=ExtResource("1_gfmfp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0332162, 0.0853214, -0.0366104)
+[node name="trash_can1" parent="." instance=ExtResource("1_pvsyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0568827, 0.0868329, -0.0382236)

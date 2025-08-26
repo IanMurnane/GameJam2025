@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bsvpir2kklyux"
-path="res://.godot/imported/restaurant_table_setprops.glb-7d491b5962096e0d03e7e4a0e403a3fa.scn"
+path="res://.godot/imported/restaurant_table_setprops.glb-6011b21d3eaba52c45d61d2ec83f648c.scn"
 
 [deps]
 
-source_file="res://Models/Trash Cans/restaurant_table_setprops.glb"
-dest_files=["res://.godot/imported/restaurant_table_setprops.glb-7d491b5962096e0d03e7e4a0e403a3fa.scn"]
+source_file="res://Models/Restaurant/restaurant_table_setprops.glb"
+dest_files=["res://.godot/imported/restaurant_table_setprops.glb-6011b21d3eaba52c45d61d2ec83f648c.scn"]
 
 [params]
 

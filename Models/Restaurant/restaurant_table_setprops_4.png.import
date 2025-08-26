@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://56427vje4l61"
-path.s3tc="res://.godot/imported/restaurant_table_setprops_4.png-220881e9ceb05f8a873b50fd914dd294.s3tc.ctex"
+path.s3tc="res://.godot/imported/restaurant_table_setprops_4.png-70a8a6db2c7491adf544aac1ad4970be.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Models/Trash Cans/restaurant_table_setprops_4.png"
-dest_files=["res://.godot/imported/restaurant_table_setprops_4.png-220881e9ceb05f8a873b50fd914dd294.s3tc.ctex"]
+source_file="res://Models/Restaurant/restaurant_table_setprops_4.png"
+dest_files=["res://.godot/imported/restaurant_table_setprops_4.png-70a8a6db2c7491adf544aac1ad4970be.s3tc.ctex"]
 
 [params]
 
