@@ -1,10 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3duc4xwxb3q"]
+[gd_scene load_steps=5 format=3 uid="uid://c3duc4xwxb3q"]
 
 [ext_resource type="Script" uid="uid://cgwrqv2obmpb3" path="res://Scripts/metal_detector.gd" id="1_stgb2"]
 [ext_resource type="PackedScene" uid="uid://lktl72hb743w" path="res://Models/Metal Detector/metal_detector.glb" id="2_stgb2"]
+[ext_resource type="AudioStream" uid="uid://dk6f8h8esjxpm" path="res://Sounds/metal_detector.wav" id="3_5nca5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_stgb2"]
+size = Vector3(0.4, 2.5, 1.19)
 
 [node name="MetalDetector" type="Node3D"]
 script = ExtResource("1_stgb2")
 
 [node name="metal_detector" parent="." instance=ExtResource("2_stgb2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.335916, 0, 0.104937)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.25, 0.135)
+shape = SubResource("BoxShape3D_stgb2")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26348, 0.84241, 0)
+stream = ExtResource("3_5nca5")
+
+[connection signal="body_entered" from="Area3D" to="." method="on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="on_body_exited"]

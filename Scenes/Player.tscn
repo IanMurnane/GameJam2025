@@ -12,7 +12,7 @@ size = Vector3(0.4, 1.35312, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dewec"]
 size = Vector3(0.4, 1.15044, 0.5)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_kyqiw")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
