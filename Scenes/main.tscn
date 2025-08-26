@@ -155,11 +155,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 208, 0, 0)
 [node name="Blank14" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218, 0, 0)
 show_title = false
-show_t_2_g_a = true
 
 [node name="Blank15" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 0, 0)
 show_title = false
+show_t_2_g_a = true
 
 [node name="Blank16" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 238, 0, 0)
