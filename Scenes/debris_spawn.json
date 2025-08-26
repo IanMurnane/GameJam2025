@@ -1,0 +1,24 @@
+{
+  "debris": [
+    {
+      "scene": "metal_detector",
+      "position": 1
+    },
+    { "scene": "seats", "position": 2 },
+    { "scene": "trash1", "position": 2 },
+    {
+      "scene": "trash2",
+      "position": -2
+    },
+    {
+      "scene": "trash2",
+      "position": 2
+    },
+    { "scene": "seats", "position": 5 },
+    { "scene": "trash1", "position": 3 },
+    {
+      "scene": "trash2",
+      "position": 10
+    }
+  ]
+}

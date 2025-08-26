@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dibmxhdq7ngke"]
+
+[ext_resource type="PackedScene" uid="uid://bsvpir2kklyux" path="res://Models/Trash Cans/restaurant_table_setprops.glb" id="1_m2rhc"]
+[ext_resource type="Script" uid="uid://cvxptk4h2d21l" path="res://Scripts/pizza_shop.gd" id="1_v5km6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2rhc"]
+size = Vector3(2.97067, 1.09436, 4.71088)
+
+[node name="Pizza Shop" type="Node3D"]
+transform = Transform3D(-3, 0, -4.33617e-08, 0, 1.249, 0, 2.62268e-07, 0, -0.496, 0, 0, 0)
+script = ExtResource("1_v5km6")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_m2rhc")]
+transform = Transform3D(0.165258, 0, -5.58794e-09, 0, 0.396828, 0, 2.23517e-08, 0, 1, 0.643606, 0, -0.901377)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00658099, 0.416321, 0.828178)
+shape = SubResource("BoxShape3D_m2rhc")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

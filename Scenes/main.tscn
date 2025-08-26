@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://cod0ste8204p4"]
+[gd_scene load_steps=15 format=3 uid="uid://cod0ste8204p4"]
 
 [ext_resource type="Texture2D" uid="uid://by1lp1a6xgdxn" path="res://Materials/Concrete/textures/concrete_floor_worn_001_diff_1k.jpg" id="1_kln2b"]
+[ext_resource type="Script" uid="uid://dackfd7txtrug" path="res://Scripts/spawn_debris.gd" id="1_kry3j"]
 [ext_resource type="Texture2D" uid="uid://b4me3und5041j" path="res://Images/Title.png" id="2_pbw6q"]
 [ext_resource type="Texture2D" uid="uid://c3b7mg34npfao" path="res://Materials/Concrete/textures/concrete_floor_worn_001_nor_gl_1k.jpg" id="2_rgh2o"]
 [ext_resource type="Texture2D" uid="uid://c506qiqf8wl75" path="res://Materials/Concrete/textures/concrete_floor_worn_001_rough_1k.jpg" id="3_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://by64xp5ycl0ah" path="res://Scenes/Player.tscn" id="4_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://do500g2iq34j6" path="res://Scenes/Debris/policeman.tscn" id="7_6bp64"]
+[ext_resource type="PackedScene" uid="uid://uq3qd26okjgp" path="res://Scenes/Debris/people.tscn" id="8_344ge"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hptm8"]
 size = Vector3(10, 10, 0.2)
@@ -30,6 +33,7 @@ size = Vector3(10, 1.2, 2)
 size = Vector3(10, 1.2, 2)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_kry3j")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 5)
@@ -43,6 +47,7 @@ shadow_enabled = true
 sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0526, 0, 0)
 
 [node name="WallChunks" type="Node3D" parent="."]
 
@@ -70,3 +75,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallChunks/Plain/Floor/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 shape = SubResource("BoxShape3D_rgh2o")
+
+[node name="Policeman" parent="." instance=ExtResource("7_6bp64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.32289, 0, -0.195101)
+
+[node name="People" parent="." instance=ExtResource("8_344ge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.335507, 0.0343409, 0.374075)

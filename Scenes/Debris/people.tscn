@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://uq3qd26okjgp"]
+
+[ext_resource type="Script" uid="uid://devcem38s8civ" path="res://Scripts/people.gd" id="1_656lv"]
+[ext_resource type="PackedScene" uid="uid://40uncd7efmye" path="res://Models/Young Woman/young_woman.glb" id="1_jk6ha"]
+[ext_resource type="PackedScene" uid="uid://fq255y725n7o" path="res://Models/Cool Man/cool_man.glb" id="2_45mav"]
+[ext_resource type="PackedScene" uid="uid://dhsl8844an03x" path="res://Models/Man/3d_scan_man_1.glb" id="3_7fl3g"]
+[ext_resource type="PackedScene" uid="uid://d5nqe5oerd2" path="res://Models/Indian Man/indian_man.glb" id="4_f7vek"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_656lv"]
+size = Vector3(0.706421, 1.88464, 2.24475)
+
+[node name="People" type="Node3D"]
+script = ExtResource("1_656lv")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_jk6ha")]
+transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.93403e-08, 0, 0.878371, -0.0439301)
+
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("2_45mav")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.631277, 0.00105381, -0.036177)
+
+[node name="Sketchfab_Scene3" parent="." instance=ExtResource("3_7fl3g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.23602, 0.9105, 0)
+
+[node name="Sketchfab_Scene4" parent="." instance=ExtResource("4_f7vek")]
+transform = Transform3D(-2.40413e-08, 0, 0.55, 0, 0.55, 0, -0.55, 0, -2.40413e-08, -1.84927, 0, 0.0469971)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.631277, 0.00105381, -0.036177)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109253, 0.905623, -0.258506)
+shape = SubResource("BoxShape3D_656lv")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
