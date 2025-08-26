@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b3nbdhm2epirc"
+path.s3tc="res://.godot/imported/worker_taking_a_walk_7.jpg-87928120973a56e20d6b9e87f5d74eea.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "a190b1387533eba97d3e66caca22b8af"
+}
+
+[deps]
+
+source_file="res://Models/Outside Worker/worker_taking_a_walk_7.jpg"
+dest_files=["res://.godot/imported/worker_taking_a_walk_7.jpg-87928120973a56e20d6b9e87f5d74eea.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

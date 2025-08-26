@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dakpe6j2qlhab"]
+
+[ext_resource type="PackedScene" uid="uid://b61hlkqe0l0yy" path="res://Models/airport_sign.glb" id="1_7u85k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ywlxg"]
+size = Vector3(0.305, 2.4, 1.7)
+
+[node name="AirportSign" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_7u85k")]
+transform = Transform3D(-0.97237, 0, -0.233445, 0, 1, 0, 0.233445, 0, -0.97237, 1.685, 3.11, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.968148, 0, 0.25038, 0, 1, 0, -0.25038, 0, 0.968148, 1.68341, 4.25105, 0)
+shape = SubResource("BoxShape3D_ywlxg")

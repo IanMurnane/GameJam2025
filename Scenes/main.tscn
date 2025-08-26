@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cod0ste8204p4"]
+[gd_scene load_steps=13 format=3 uid="uid://csn4yvaeb5g7w"]
 
 [ext_resource type="Script" uid="uid://denb46fsnvtfv" path="res://Scripts/Camera.gd" id="2_50glp"]
 [ext_resource type="PackedScene" uid="uid://bclh3nd1tlk8l" path="res://Scenes/WallChunks/Blank.tscn" id="2_kln2b"]
 [ext_resource type="PackedScene" uid="uid://bj8le8236t7ru" path="res://Scenes/WallChunks/Window.tscn" id="4_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://by64xp5ycl0ah" path="res://Scenes/Player.tscn" id="4_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://dakpe6j2qlhab" path="res://Scenes/Debris/airport_sign.tscn" id="4_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://dujiqtviwtfy5" path="res://Models/boeing_747-100.glb" id="5_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://bbmwt8u56n4tl" path="res://Models/johannesburg_airport_tower.glb" id="6_jw32o"]
 [ext_resource type="PackedScene" uid="uid://cypfh57b40iwh" path="res://Models/airport_catering_truck.glb" id="7_50glp"]
+[ext_resource type="PackedScene" uid="uid://b45mpcaur7ghw" path="res://Models/Outside Worker/worker_taking_a_walk.glb" id="8_344ge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rgh2o"]
 
@@ -52,12 +54,16 @@ sky_mode = 1
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("4_rgh2o")]
+axis_lock_linear_z = true
 
 [node name="WallChunks" type="Node3D" parent="."]
 
 [node name="Blank0" parent="WallChunks" instance=ExtResource("2_kln2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 show_title = false
+
+[node name="AirportSign" parent="WallChunks" instance=ExtResource("4_ynf5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [node name="Title" parent="WallChunks" instance=ExtResource("2_kln2b")]
 
@@ -115,9 +121,12 @@ transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-0
 transform = Transform3D(-0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, 42.6992, 3.81539, -26.955)
 
 [node name="Tower" parent="Outside" instance=ExtResource("6_jw32o")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 87.0257, -1.29329, -100)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 87.026, -1.93, -100)
 
 [node name="CateringTruck" parent="Outside" instance=ExtResource("7_50glp")]
 transform = Transform3D(-4.80825e-08, 0, -1.1, 0, 1.1, 0, 1.1, 0, -4.80825e-08, 92.8574, 0.259741, -10)
+
+[node name="OutsideWorker" parent="Outside" instance=ExtResource("8_344ge")]
+transform = Transform3D(0.861629, 0, 0.507538, 0, 1, 0, -0.507538, 0, 0.861629, 97.484, 0.05, -11.91)
 
 [connection signal="timeout" from="Camera3D/FlashTimer" to="Camera3D" method="on_flash_timer_timeout"]
