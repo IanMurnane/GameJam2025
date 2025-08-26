@@ -8,9 +8,6 @@ extends CharacterBody3D
 
 @onready var game_started = true
 
-# func _ready():
-#   await get_tree().create_timer(2.0).timeout
-#   game_started = true
 
 # Define player states as an enum for clarity.
 enum PlayerState {
@@ -41,6 +38,9 @@ func _ready():
   await get_tree().create_timer(2.0).timeout
   animation_player.animation_finished.connect(on_animation_finished)
   set_state(PlayerState.IDLE)
+  
+  collisionJump.disabled = true
+  collisionDouble.disabled = true
 
   EventBus.player_entered.connect(_on_player_entered)
   EventBus.player_exited.connect(_on_player_exited)
@@ -63,7 +63,7 @@ func _on_player_exited():
   pass
 
 func _physics_process(delta: float) -> void:
-  print("Player position:", global_position)
+  #print("Player position:", global_position)
   if out_of_time:
     if current_state != PlayerState.ANGRY:
       global_position.y = 0
@@ -113,7 +113,9 @@ func _physics_process(delta: float) -> void:
 
   move_and_slide()
   
+  # Limit movement
   global_position.x = max(-5.0, global_position.x)
+  global_position.y = max(0.0, global_position.y)
 
 func on_animation_finished(anim_name):
   if anim_name == "jump" or anim_name == "doubleJump":
@@ -136,13 +138,28 @@ func set_state(new_state: PlayerState) -> void:
 
   match current_state:
     PlayerState.IDLE:
+      collision.disabled = false
+      collisionJump.disabled = true
+      collisionDouble.disabled = true
       animation_player.play("idle")
     PlayerState.RUNNING:
+      collision.disabled = false
+      collisionJump.disabled = true
+      collisionDouble.disabled = true
       animation_player.play("run")
     PlayerState.JUMPING:
+      collision.disabled = true
+      collisionJump.disabled = false
+      collisionDouble.disabled = true
       animation_player.play("jump")
     PlayerState.DOUBLE_JUMPING:
+      collision.disabled = true
+      collisionJump.disabled = true
+      collisionDouble.disabled = false
       animation_player.play("doubleJump")
       animation_player.seek(0.5)
     PlayerState.ANGRY:
+      collision.disabled = false
+      collisionJump.disabled = true
+      collisionDouble.disabled = true
       animation_player.play("angry")
