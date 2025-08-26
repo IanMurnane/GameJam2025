@@ -1,16 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dibmxhdq7ngke"]
+[gd_scene load_steps=4 format=3 uid="uid://dibmxhdq7ngke"]
 
 [ext_resource type="PackedScene" uid="uid://bsvpir2kklyux" path="res://Models/Restaurant/restaurant_table_setprops.glb" id="1_m2rhc"]
 [ext_resource type="Script" uid="uid://cvxptk4h2d21l" path="res://Scripts/pizza_shop.gd" id="1_v5km6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m2rhc"]
-size = Vector3(2.97067, 1.09436, 4.71088)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_v5km6"]
-size = Vector3(1.4458, 0.789246, 4.24719)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vhc3m"]
-size = Vector3(0.429443, 0.743408, 3.36578)
+size = Vector3(1.19578, 1.09436, 6.50462)
 
 [node name="Pizza Shop" type="Node3D"]
 transform = Transform3D(-3, 0, -4.33617e-08, 0, 1.249, 0, 2.62268e-07, 0, -0.496, 0, 0, 0)
@@ -22,20 +16,8 @@ transform = Transform3D(0.165258, 0, -5.58794e-09, 0, 0.396828, 0, 2.23517e-08, 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00658099, 0.416321, 0.828178)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.894024, 0.416321, -0.643975)
 shape = SubResource("BoxShape3D_m2rhc")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74728, 0.304234, -0.647278)
-visible = false
-shape = SubResource("BoxShape3D_v5km6")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.839461, 0.31876, -0.679658)
-shape = SubResource("BoxShape3D_vhc3m")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
