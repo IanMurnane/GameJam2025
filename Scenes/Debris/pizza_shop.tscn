@@ -11,7 +11,7 @@ transform = Transform3D(-3, 0, -4.33617e-08, 0, 1.249, 0, 2.62268e-07, 0, -0.496
 script = ExtResource("1_v5km6")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("1_m2rhc")]
-transform = Transform3D(0.165258, 0, -5.58794e-09, 0, 0.396828, 0, 2.23517e-08, 0, 1, 0.643606, 0, -0.901377)
+transform = Transform3D(0.165258, 0, -5.58794e-09, 0, 0.396828, 0, 2.23517e-08, 0, 1, 0.643606, 0, -2.10178)
 
 [node name="Area3D" type="Area3D" parent="."]
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxiqeib5irh6l"]
+
+[ext_resource type="Script" uid="uid://dgg6fuypy2wh1" path="res://Scenes/Debris/people_checking.gd" id="1_jro5v"]
+[ext_resource type="PackedScene" uid="uid://uq3qd26okjgp" path="res://Scenes/Debris/people.tscn" id="1_r3ego"]
+[ext_resource type="PackedScene" uid="uid://c3duc4xwxb3q" path="res://Scenes/Debris/metal_detector.tscn" id="2_jro5v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r3ego"]
+size = Vector3(4.47437, 2.52087, 1.45752)
+
+[node name="PeopleChecking" type="Node3D"]
+script = ExtResource("1_jro5v")
+
+[node name="People" parent="." instance=ExtResource("1_r3ego")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.431702, 0, 0.0844727)
+
+[node name="MetalDetector" parent="." instance=ExtResource("2_jro5v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.399139, 0, 0.107422)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18991, 1.24384, 0.206745)
+shape = SubResource("BoxShape3D_r3ego")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

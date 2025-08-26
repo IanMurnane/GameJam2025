@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 EventBus="*res://Scripts/EventBus.gd"
 
+[dotnet]
+
+project/assembly_name="GameJam2025 Last Call"
+
 [input]
 
 Jump={

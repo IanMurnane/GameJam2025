@@ -3,6 +3,12 @@ extends CharacterBody3D
 @onready var animation_player = $SuitMan/AnimationPlayer
 @onready var suit_man_pivot = $SuitMan
 
+@onready var game_started = true
+
+# func _ready():
+#   await get_tree().create_timer(2.0).timeout
+#   game_started = true
+
 # Define player states as an enum for clarity.
 enum PlayerState {
   INIT,
@@ -27,6 +33,7 @@ var rotation_speed = 8.0 # Adjust this value to control the speed of the turn
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+  await get_tree().create_timer(2.0).timeout
   animation_player.animation_finished.connect(on_animation_finished)
   set_state(PlayerState.IDLE)
 
@@ -34,12 +41,13 @@ func _ready():
   EventBus.player_exited.connect(_on_player_exited)
 
 func _on_player_entered():
-  #print("Player entered the area!")
-  is_speed_reduced = true
+  if game_started:
+    # print("Player entered the area!")
+    is_speed_reduced = true
   pass
 
 func _on_player_exited():
-  #print("Player exited the area!")
+  # print("Player exited the area!")
   is_speed_reduced = false
   pass
 
@@ -51,10 +59,10 @@ func _physics_process(delta: float) -> void:
   # Handle jump and double jump logic
   if Input.is_action_just_pressed("Jump"):
     if is_on_floor():
-      velocity.y = jump_velocity
+      velocity.y = jump_velocity if not is_speed_reduced else reduced_jump_velocity
       set_state(PlayerState.JUMPING)
     elif current_state == PlayerState.JUMPING:
-      velocity.y = jump_velocity
+      velocity.y = jump_velocity if not is_speed_reduced else reduced_jump_velocity
       set_state(PlayerState.DOUBLE_JUMPING)
     return # Prevent the rest of the movement code from running on jump input
 
@@ -63,7 +71,8 @@ func _physics_process(delta: float) -> void:
   var direction = Vector3(input_dir.x, 0, 0).normalized()
   
   if direction:
-    velocity.x = direction.x * speed
+    velocity.x = direction.x * (speed if not is_speed_reduced else reduced_speed)
+
     set_state(PlayerState.RUNNING)
     # Update the target rotation
     if input_dir.x > 0:
