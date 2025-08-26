@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://df0mflfd66v1s"]
+
+[ext_resource type="PackedScene" uid="uid://cd7b2gey7dqek" path="res://Models/SuitMan/airport_seats.glb" id="1_j3by7"]
+[ext_resource type="Script" uid="uid://7jwat32s7dne" path="res://Scripts/seats.gd" id="1_rbb8m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j3by7"]
+size = Vector3(10.6826, 15.6958, 38.751)
+
+[node name="Seats" type="Node3D"]
+script = ExtResource("1_rbb8m")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, -2.66287, 0, -2.15516)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4353, 6.95433, 23.7714)
+shape = SubResource("BoxShape3D_j3by7")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_j3by7")]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -2.12245, 0, -1.70035)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

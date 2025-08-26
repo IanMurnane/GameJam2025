@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://do500g2iq34j6"]
+
+[ext_resource type="PackedScene" uid="uid://c0er2tvx3elhg" path="res://Models/Policeman/policeman.glb" id="1_kfx64"]
+[ext_resource type="Script" uid="uid://7xrwxrtx36tb" path="res://Scripts/policeman.gd" id="1_n2pmj"]
+
+[node name="Policeman" type="Node3D"]
+script = ExtResource("1_n2pmj")
+
+[node name="policeman" parent="." instance=ExtResource("1_kfx64")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)

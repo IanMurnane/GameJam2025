@@ -1,0 +1,9 @@
+debris:
+  - scene: res://Scenes/Debris/pizza_shop.tscn
+    position: [2.0, 0.0, 0.0]
+  - scene: res://Scenes/Debris/seats.tscn
+    position: [-3.5, 0.0, 0.0]
+  - scene: res://Scenes/Debris/trash1.tscn
+    position: [0.0, 0.0, 1.5]
+  - scene: res://Scenes/Debris/trash2.tscn
+    position: [4.0, 0.0, -1.0]
