@@ -293,16 +293,16 @@
       "position": 272
     },
     {
-      "scene": "pizza_shop",
-      "position": 280
-    },
-    {
       "scene": "people_checking",
-      "position": 290
+      "position": 280
     }
     ,
     {
       "scene": "policeman",
+      "position": 282
+    },
+    {
+      "scene": "waving_lady",
       "position": 292
     }
 

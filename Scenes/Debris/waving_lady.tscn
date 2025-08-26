@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ehmm4iepxnmx"]
+
+[ext_resource type="PackedScene" uid="uid://7tssat261mw0" path="res://Models/Waving Lady/waving_lady.glb" id="1_ajrfb"]
+[ext_resource type="Script" uid="uid://ctf0vmmo67lrt" path="res://Scripts/waving_lady.gd" id="1_k4t2q"]
+
+[node name="WavingLady" type="Node3D"]
+script = ExtResource("1_k4t2q")
+
+[node name="waving_lady" parent="." instance=ExtResource("1_ajrfb")]
+transform = Transform3D(-6.11959e-08, 0, -1.4, 0, 1.4, 0, 1.4, 0, -6.11959e-08, -0.0018487, 0, -0.0261005)
