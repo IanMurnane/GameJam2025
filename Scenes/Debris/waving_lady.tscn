@@ -7,4 +7,4 @@
 script = ExtResource("1_k4t2q")
 
 [node name="waving_lady" parent="." instance=ExtResource("1_ajrfb")]
-transform = Transform3D(-6.11959e-08, 0, -1.4, 0, 1.4, 0, 1.4, 0, -6.11959e-08, -0.0018487, 0, -0.0261005)
+transform = Transform3D(1.36941, 0, -0.291076, 0, 1.4, 0, 0.291076, 0, 1.36941, -0.0018487, 0, -0.0261005)

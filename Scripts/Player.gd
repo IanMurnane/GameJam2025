@@ -54,7 +54,9 @@ func _finished():
   out_of_time = true
 
 func _out_of_time():
+  if out_of_time: return
   set_state(PlayerState.ANGRY)
+  global_position.y = 0
   out_of_time = true
 
 func _on_player_entered():
@@ -71,10 +73,11 @@ func _on_player_exited():
 
 func _physics_process(delta: float) -> void:
   #print("Player position:", global_position)
+  
   if out_of_time:
-    if current_state != PlayerState.ANGRY:
-      global_position.y = 0
-      set_state(PlayerState.ANGRY)
+    #if current_state != PlayerState.ANGRY:
+    #  global_position.y = 0
+    #  set_state(PlayerState.ANGRY)
     if Input.is_action_just_pressed("Jump"):
       set_state(PlayerState.IDLE)
       global_position.x = 0
