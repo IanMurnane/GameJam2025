@@ -6,7 +6,7 @@ extends CanvasLayer
 # A reference to the player node. You'll need to set this.
 @onready var player_node: Node3D = get_parent().get_node("Player")
 
-var total_time_seconds = 70 # Set the total time to 60 seconds.
+var total_time_seconds = 65 # Set the total time to 60 seconds.
 var player_x_threshold = 8.0 # The x-position to trigger the timer.
 var label_visible: bool = false # Tracks whether label is currently shown
 
